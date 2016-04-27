@@ -6,19 +6,19 @@ def contain(collection, target):
     return target in collection
 
 
-def bs_contains(orderd, target):
+def bs_contains(ordered, target):
     """
     Binary search for determine ordered list contains target
     :return position if target in collection
     """
     low = 0
-    high = len(orderd) - 1
+    high = len(ordered) - 1
 
     while low <= high:
         mid = (low + high)//2
-        if target == orderd[mid]:
+        if target == ordered[mid]:
             return mid
-        elif target < orderd[mid]:
+        elif target < ordered[mid]:
             high = mid - 1
         else:
             low = mid + 1
@@ -44,7 +44,7 @@ def insert_in_place_bs(ordered, target):
 
 
 def check_performance(function):
-    """Check performace of search method"""
+    """Check performance of search method"""
     n = 1024
     while n < 999999:
         sorted_list = list(range(n))
