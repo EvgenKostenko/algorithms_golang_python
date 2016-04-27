@@ -33,6 +33,7 @@ def insert_in_place_simple(ordered, target):
             return
     ordered.append(target)
 
+
 def insert_in_place_bs(ordered, target):
     """Insert target in collection"""
     idx = bs_contains(ordered, target)
@@ -40,7 +41,6 @@ def insert_in_place_bs(ordered, target):
         ordered.insert(-(idx + 1), target)
         return
     ordered.insert(idx, target)
-
 
 
 def check_performance(function):
@@ -57,6 +57,7 @@ def check_performance(function):
 
         n *= 2
 
+
 if __name__ == '__main__':
     check_performance(insert_in_place_simple)
     print ('=====================================')
@@ -65,10 +66,3 @@ if __name__ == '__main__':
     check_performance(contain)
     print ('=====================================')
     check_performance(bs_contains)
-
-
-
-
-
-
-

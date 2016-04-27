@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"time"
 	"sort"
+	"time"
 )
 
-type check_function func([]int, int) int
+type checkFunction func([]int, int) int
 
-func generate_slice(n int) []int {
+func generateSlice(n int) []int {
 	var slice []int
 	for i := 0; i <= n; i++ {
 		slice = append(slice, i)
@@ -27,7 +27,7 @@ func contain(collection []int, target int) int {
 }
 
 // Binary search for determine ordered list contains target and return number of element
-func bs_contain(collection []int, target int) int {
+func bsContain(collection []int, target int) int {
 	var mid int
 	low := 0
 	high := len(collection) - 1
@@ -44,10 +44,10 @@ func bs_contain(collection []int, target int) int {
 	return -(low + 1)
 }
 
-func check_performance(function check_function) {
+func checkPerformance(function checkFunction) {
 	n := 1024
 	for n < 99999999 {
-		sorted_list := generate_slice(n)
+		sorted_list := generateSlice(n)
 
 		now := time.Now()
 		function(sorted_list, n/4)
@@ -60,10 +60,10 @@ func check_performance(function check_function) {
 }
 
 func main() {
-	check_performance(contain)
+	checkPerformance(contain)
 	fmt.Println("================")
-	check_performance(bs_contain)
+	checkPerformance(bsContain)
 	fmt.Println("================")
-	check_performance(sort.SearchInts)
+	checkPerformance(sort.SearchInts)
 
 }
