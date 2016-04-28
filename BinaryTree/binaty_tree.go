@@ -63,16 +63,16 @@ type BinaryTree struct {
 }
 
 //  Insert value into proper location in BR
-func (bt *BinaryTree) add (value int) {
+func (bt *BinaryTree) add(value int) {
 	if bt.Root == nil {
-		bt.Root = &BinaryNode{Value:value}
+		bt.Root = &BinaryNode{Value: value}
 	} else {
 		bt.Root.add(value)
 	}
 }
 
 // Check BT contains target value
-func (bt *BinaryTree) contains (target int) bool {
+func (bt *BinaryTree) contains(target int) bool {
 	node := bt.Root
 	for node != nil {
 		if target == node.Value {
