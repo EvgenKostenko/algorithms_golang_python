@@ -89,15 +89,14 @@ func (bt *BinaryTree) contains(target int) bool {
 }
 
 // Remove value from tree
-func (bt *BinaryTree) remove (value int) {
+func (bt *BinaryTree) remove(value int) {
 	if bt.Root != nil {
 		bt.Root = bt.removeFromParent(bt.Root, value)
 	}
 }
 
-
 //Remove tree from tree rooted at parent
-func (bt *BinaryTree) removeFromParent (parent *BinaryNode, value int) *BinaryNode {
+func (bt *BinaryTree) removeFromParent(parent *BinaryNode, value int) *BinaryNode {
 	if parent == nil {
 		return nil
 	}
