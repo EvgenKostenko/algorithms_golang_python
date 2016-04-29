@@ -88,10 +88,37 @@ func (bt *BinaryTree) contains(target int) bool {
 	return false
 }
 
+// Remove value from tree
+func (bt *BinaryTree) remove (value int) {
+	if bt.Root != nil {
+		bt.Root = bt.removeFromParent(bt.Root, value)
+	}
+}
+
+
+//Remove tree from tree rooted at parent
+func (bt *BinaryTree) removeFromParent (parent *BinaryNode, value int) *BinaryNode {
+	if parent == nil {
+		return nil
+	}
+
+	if value == parent.Value {
+		return parent.delete()
+	} else if value < parent.Value {
+
+		parent.Left = bt.removeFromParent(parent.Left, value)
+	} else {
+		parent.Right = bt.removeFromParent(parent.Right, value)
+	}
+
+	return parent
+}
+
 func main() {
 	a := BinaryTree{}
 	a.add(5)
 	a.add(10)
 	a.add(1)
-	fmt.Println(a.contains(11), a.contains(1))
+	a.remove(10)
+	fmt.Println(a.contains(11), a.contains(1), a.contains(10))
 }
