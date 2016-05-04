@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package binary_tree
 
 type BinaryNode struct {
 	Value int
@@ -14,13 +10,13 @@ type BinaryNode struct {
 func (bn *BinaryNode) add(value int) {
 	if value <= bn.Value {
 		if bn.Left != nil {
-			bn.add(value)
+			bn.Left.add(value)
 		} else {
 			bn.Left = &BinaryNode{Value: value}
 		}
 	} else {
 		if bn.Right != nil {
-			bn.add(value)
+			bn.Right.add(value)
 		} else {
 			bn.Right = &BinaryNode{Value: value}
 		}
@@ -43,7 +39,7 @@ func (bn *BinaryNode) delete() *BinaryNode {
 	grandchild := bn.Right
 
 	if grandchild != nil {
-		for grandchild != nil {
+		for grandchild.Right != nil {
 			child = grandchild
 			grandchild = child.Right
 		}
@@ -104,20 +100,10 @@ func (bt *BinaryTree) removeFromParent(parent *BinaryNode, value int) *BinaryNod
 	if value == parent.Value {
 		return parent.delete()
 	} else if value < parent.Value {
-
 		parent.Left = bt.removeFromParent(parent.Left, value)
 	} else {
 		parent.Right = bt.removeFromParent(parent.Right, value)
 	}
 
 	return parent
-}
-
-func main() {
-	a := BinaryTree{}
-	a.add(5)
-	a.add(10)
-	a.add(1)
-	a.remove(10)
-	fmt.Println(a.contains(11), a.contains(1), a.contains(10))
 }
