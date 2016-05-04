@@ -1,4 +1,4 @@
-package binary_tree
+package main
 
 import (
 	"testing"
@@ -24,7 +24,7 @@ func TestContainBinaryTree(t *testing.T) {
 	}
 }
 
-func TestRemoveBinaryTree(t *testing.T)  {
+func TestRemoveBinaryTree(t *testing.T) {
 	// Create Bt
 	a := BinaryTree{}
 
@@ -55,4 +55,3 @@ func TestRemoveBinaryTree(t *testing.T)  {
 		t.Error("Remove element not work")
 	}
 }
-

@@ -1,4 +1,10 @@
-package binary_tree
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
 
 type BinaryNode struct {
 	Value int
@@ -106,4 +112,24 @@ func (bt *BinaryTree) removeFromParent(parent *BinaryNode, value int) *BinaryNod
 	}
 
 	return parent
+}
+
+func main() {
+	// Check performance
+	n := 1024
+
+	for n < 999999 {
+		bt := BinaryTree{}
+
+		for i := 1; i <= n; i++ {
+			bt.add(rand.Intn(n))
+		}
+		now := time.Now()
+		bt.contains(rand.Intn(n))
+		elapsed := time.Since(now)
+
+		fmt.Println(n, elapsed)
+
+		n *= 2
+	}
 }
